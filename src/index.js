@@ -8,6 +8,14 @@ import zh_CN from 'antd/es/locale/zh_CN';
 import store from './redux/store'
 import './index.less';
 
+if(localStorage.getItem('save')) {
+  //触发一个action
+  store.dispatch({
+    type: 'SETUSER',
+    user: JSON.parse(localStorage.getItem('save'))
+  })
+}
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -21,7 +29,7 @@ root.render(
     
   >
     <Provider store={store}>
-      <Router>
+      <Router >
         <App />
       </Router>
     </Provider>

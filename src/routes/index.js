@@ -3,26 +3,32 @@ import {Navigate} from 'react-router-dom'
 import StudentInfo from '../pages/StudentInfo'
 import GradeAdd from '../pages/GradeAdd'
 import GradesList from '../pages/GradesList'
+import Auth from '../pages/Auth'
+import Login from '../pages/Login'
 
 export default [
-    // {
-    //     path: '/home'
-    //     element: 
-    // },
+    {
+        path: '/sign',
+        element: <Auth />
+    },
+    {
+        path: '/login',
+        element: <Login />
+    },
     { 
         path: '/stuInfo',
         element: <StudentInfo />
     },
     {
         path: '/addGrade',
-        element: <GradeAdd />  
+        element: <GradeAdd />
     },
     {
         path: '/allGrades',
-        element: <GradesList />  
+        element:  <GradesList />
     },
     {
         path: '/',
-        element: <Navigate to='/stuInfo' />
+        element: <Navigate to='/stuInfo'/>
     }
 ]

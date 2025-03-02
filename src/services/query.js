@@ -55,3 +55,19 @@ export function getStuPreGrades(data) {
         params: data
     })
 }
+
+export function register(data) {
+    return request({
+        url:'/register',
+        method: 'post',
+        data
+    })
+}
+
+export function login(data) {
+    return request({
+        url:'/login',
+        method: 'post',
+        data
+    })
+}

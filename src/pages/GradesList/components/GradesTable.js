@@ -25,7 +25,8 @@ const columns = [
       compare: (a, b) => a.chinese - b.chinese,
       multiple: 3,
     },
-    align: 'center'
+    align: 'center',
+    render: (text, record) => text? text: 0
   },
   {
     title: '数学',
@@ -34,7 +35,8 @@ const columns = [
       compare: (a, b) => a.math - b.math,
       multiple: 2,
     },
-    align: 'center'
+    align: 'center',
+    render: (text, record) => text? text: 0
   },
   {
     title: '英语',
@@ -43,20 +45,20 @@ const columns = [
       compare: (a, b) => a.english - b.english,
       multiple: 1,
     },
-    align: 'center'
+    align: 'center',
+    render: (text, record) => text? text: 0
   },
   {
     title: '总分',
     dataIndex: 'grades',
     render: (_, record) => {
-        const {chinese, math, english} = record
+        const {chinese=0, math=0, english=0} = record
         return parseInt(chinese) + parseInt(math) + parseInt(english)
     },
     sorter: {
       compare: (a, b) => {
           const {chinese:c1, math:m1, english:e1} = a
           const {chinese:c2, math:m2, english:e2} = b
-          console.log()
           return (parseInt(c1)+parseInt(m1)+parseInt(e1))-(parseInt(c2)+parseInt(m2)+parseInt(e2))
       },
       multiple: 1,

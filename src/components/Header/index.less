@@ -30,5 +30,64 @@
           margin-left: 10px;
         }
     }
+
+    .user {
+      float: right;
+      color: #fff;
+      font-weight: bold;
+      font-size: 14px;
+      span {
+        cursor: pointer;
+      }
+    }
+
+    .user1 {
+      position: relative;
+      float: right;
+      color: #fff;
+      font-weight: bold;
+      font-size: 14px;
+      span {
+        cursor: pointer;
+      }
+      .arrowClose {
+        display: inline-block;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid #fff;
+        margin: 0 0 3px 4px;
+      }
+
+      .arrowOpen {
+        display: inline-block;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid #fff;
+        border-bottom: 5px solid transparent;
+        margin: 0 0 -3px 4px;
+      }
+
+      .loginout {
+        position: absolute;
+        top: 42px;
+        left: -16px;
+        z-index: 111;
+        display: block;
+        width: 100px;
+        height: 30px;
+        background-color: #fff;
+        border-radius: 4px;
+        border: 1px solid orange;
+        cursor: pointer;
+        li {
+          height: 30px;
+          line-height: 30px;
+          text-align: center;
+          color: orange;
+        }
+      }
+    }
+
 }
 

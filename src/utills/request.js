@@ -1,4 +1,5 @@
 import axios from 'axios'
+import store from '../redux/store'
  
  
 var request = axios.create({
@@ -9,6 +10,13 @@ var request = axios.create({
  
 // 添加请求拦截器
 request.interceptors.request.use((config) => {
+    // store.subscribe(() => {
+       if(store.getState().login.user.token){
+        // request.defaults.headers.common['Authorization'] = store.getState().login.user.token
+        config.headers.Authorization = store.getState().login.user.token
+       }
+    // })
+
     return config
 }, function (error) {
     //对相应错误做点什么

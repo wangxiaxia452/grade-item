@@ -89,13 +89,13 @@ class GradeAdd extends PureComponent {
   getPreGradeFunc = (preList = [], curList = []) => {
     const { subjectChoose } = this.state
     let allInfoList = []
-    preList && preList.map((e,i)=> {
-      curList && curList.map( (e1,i1) => {
+    curList && curList.map( (e1,i1) => {
+      allInfoList.push({
+        ...e1
+      })
+      preList && preList.map((e,i) => {
         if(e['stuID'] === e1['stuID']){
-          allInfoList.push({
-            ...e1,
-            ['pre_'+subjectChoose]: e[subjectChoose]
-          })
+          e1['pre_'+subjectChoose] = e[subjectChoose]
         }
       })
     })
@@ -188,10 +188,12 @@ class GradeAdd extends PureComponent {
                     <p className='pre_card'>
                       比上次：
                       {
+                        item['pre_'+subjectChoose]?(
                           <span 
                             className={item[subjectChoose] - item['pre_'+subjectChoose] >= 0? 'pos_num':'neg_num'}
                           >     {item[subjectChoose] - item['pre_'+subjectChoose]>=0? `+${item[subjectChoose] - item['pre_'+subjectChoose]}`:`-${item['pre_'+subjectChoose] - item[subjectChoose]}`}
                           </span>
+                        ): '--'
                       }
                     </p>
                   </li>
