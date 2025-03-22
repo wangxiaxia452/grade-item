@@ -56,6 +56,14 @@ export function getStuPreGrades(data) {
     })
 }
 
+export function stuPreGrades(data) {
+    return request({
+        url:'/history',
+        method: 'post',
+        data
+    })
+}
+
 export function register(data) {
     return request({
         url:'/register',
@@ -67,6 +75,14 @@ export function register(data) {
 export function login(data) {
     return request({
         url:'/login',
+        method: 'post',
+        data
+    })
+}
+
+export function upload(data) {
+    return request({
+        url:'/upload',
         method: 'post',
         data
     })

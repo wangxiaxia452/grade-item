@@ -65,6 +65,15 @@ export default (props) => {
       }
     },
     {
+      title: '班级',
+      dataIndex: 'stuGrade',
+      // key: 'gender',
+      align:'center',
+      render: (_, record) => {
+        return _+"班"
+      }
+    },    
+    {
       title: '操作',
       dataIndex: 'stuID',
       align:'center',
@@ -105,11 +114,11 @@ export default (props) => {
         dataSource={stuInfo} 
         pagination={{
             total:stuInfo.length,
-            defaultPageSize:5,
+            defaultPageSize:10,
             defaultCurrent:1,
             showSizeChanger:true,
             // showQuickJumper:true,
-            pageSizeOptions: [5, 10, 20],
+            pageSizeOptions: [10, 20, 50],
             showTotal:(total) => `共 ${total} 条`,
             // onChange: (page) => {
             //   log

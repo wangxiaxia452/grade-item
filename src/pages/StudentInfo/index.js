@@ -10,28 +10,34 @@ import { getStudentInfoAsyn } from '../../redux/actions/stuInfo'
 import './index.less'
 
 function StudentInfo(props) {
-  const [classChoose, setClassChoose] = useState('41')
+  const [classChoose, setClassChoose] = useState('31')
   const [isModalOpen, setVisible] = useState(false)
   const [type, setType] = useState('')
   const [stuID, setStuID] = useState('')
   const [stuName, setStuName] = useState('')
   const [stuGender, setStuGender] = useState('')
+  const [stuGrade, setStuGrade] = useState('')
+  const [stuClass, setStuClass] = useState('')
 
   const showModal = (type, record = null) => {
     setVisible(true)
     setType(type)
     if(record){
-      const {stuID, stuName, stuGender} = record
+      const {stuID, stuName, stuGender, stuGrade: stuGradeAll} = record
+      const stuGrade = stuGradeAll.split('')[0]
+      const stuClass = stuGradeAll.split('')[1]
       setStuID(stuID)
       setStuName(stuName)
       setStuGender(stuGender)
+      setStuGrade(stuGrade)
+      setStuClass(stuClass)
     }
 
   };
 
     const handleOk = (callback = null) => {
       if(type === 'add'){
-        addStuInfo({stuID, stuName, stuGender}).then( res => {
+        addStuInfo({stuID, stuName, stuGender, stuGrade: stuGrade+''+stuClass}).then( res => {
           const { data: {code}} = res
           if(code === '0000'){
             props.getStudentInfoAsyn({classChoose})
@@ -46,7 +52,7 @@ function StudentInfo(props) {
           console.log('err',err)
         })
       }else if(type === 'edit'){
-        editStuInfo({stuID, stuName, stuGender}).then(res => {
+        editStuInfo({stuID, stuName, stuGender, stuGrade: stuGrade+''+stuClass}).then(res => {
           const { data: {code}} = res
           if(code === '0000'){
             props.getStudentInfoAsyn({classChoose})
@@ -71,6 +77,8 @@ function StudentInfo(props) {
       setStuID('')
       setStuName('')
       setStuGender('')
+      setStuGrade('')
+      setStuClass('')
     }
     const handleCancel = () => {
       setVisible(false)
@@ -80,9 +88,15 @@ function StudentInfo(props) {
       const list = {
         'stuID': setStuID,
         'stuName': setStuName,
-        'stuGender': setStuGender
+        'stuGender': setStuGender,
+        'stuGrade': setStuGrade,
+        'stuClass':setStuClass
       }
-      list[tag](e.target.value)
+      if(Object.prototype.toString.call(e)==='[object Object]'){
+        list[tag](e.target.value)
+      }else{
+        list[tag](e)
+      }
     }
 
     const handleClassChange = (value) => {
@@ -99,6 +113,8 @@ function StudentInfo(props) {
       stuID,
       stuName,
       stuGender,
+      stuGrade,
+      stuClass,
       changeValue,
       handleClassChange
     }

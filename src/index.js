@@ -16,6 +16,16 @@ if(localStorage.getItem('save')) {
   })
 }
 
+if(localStorage.getItem('isAllowImportHistorySwitch')) {
+  let str = localStorage.getItem('isAllowImportHistorySwitch')
+  store.dispatch({
+    type: 'SAVE',
+    info: {
+      isAllowImportHistorySwitch: str === 'false'?false: true
+    }
+  })
+}
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

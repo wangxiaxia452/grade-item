@@ -85,7 +85,7 @@ export default (props) => {
           columns={columns} 
           dataSource={stuGrade} 
           pagination={{
-              total:7,
+              // total:7,
             //   pageSize:5,
               showSizeChanger:true,
               showQuickJumper:true,

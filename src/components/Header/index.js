@@ -14,6 +14,10 @@ function Header(props) {
     setOpenSwitch(!isOpenSwitch)
   }
 
+  const toMyInfo = () => {
+    navigate('/myInfo')
+  }
+
   const loginout = () => {
     props.setUser({})
     localStorage.removeItem('save')
@@ -43,8 +47,9 @@ function Header(props) {
               <span>{user.userNumber}</span><span className={isOpenSwitch?'arrowOpen':'arrowClose'}></span>
               {
                 isOpenSwitch? (
-                  <ul className='loginout' onClick={loginout}>
-                    <li>退出登录</li>
+                  <ul className='loginout'>
+                    <li onClick={toMyInfo}>个人信息</li>
+                    <li onClick={loginout}>退出登录</li>
                   </ul>
                 ):null
               }

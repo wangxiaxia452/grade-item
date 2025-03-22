@@ -1,7 +1,5 @@
 import React, { PureComponent } from 'react'
-import {
-  connect
-} from 'react-redux'
+import { connect } from 'react-redux'
 // import { PlusOutlined } from '@ant-design/icons';
 import { Select, Input, Button } from 'antd';
 import { getStudentGradeAsyn } from '../../redux/actions/stuGrade'
@@ -35,7 +33,7 @@ class GradeAdd extends PureComponent {
   state={
     currentIndex: '',
     isModalOpen: false,
-    classChoose:'41',
+    classChoose:'31',
     subjectChoose:'chinese'
   }
 
@@ -129,7 +127,7 @@ class GradeAdd extends PureComponent {
        subjectChoose,
        preList
     } = this.state
-    const {stuGrade} = this.props
+    const {stuGrade, isAllowImportHistorySwitch} = this.props
     const allInfoList = this.getPreGradeFunc(preList, stuGrade)
     return (
       <div>
@@ -162,9 +160,11 @@ class GradeAdd extends PureComponent {
                       currentIndex === index?(
                         <p className='btn_card' >
                           <Button 
-                            type="primary" 
+                            // type={isAllowImportHistorySwitch?"primary":""} 
+                            className={isAllowImportHistorySwitch?"ant-btn-primary":"ant-btn-disabled"}
                             size='small' 
                             ghost
+                            disabled={!isAllowImportHistorySwitch}
                             onClick={() => this.showModal(item)}
                         >编辑成绩</Button>
                         </p>
@@ -218,7 +218,7 @@ export default connect(
   state => {
     return {
       stuGrade: state.stuGrade,
-
+      ...state.common
     }
   },
   {

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import {connect} from 'react-redux'
+import { Button } from 'antd';
 import HeaderContent from '../../components/HeaderContent'
 import GradesTable from './components/GradesTable';
 import { getStudentGradeAsyn } from '../../redux/actions/stuGrade'
@@ -7,7 +8,7 @@ import './index.less'
 
 
 function GradeList(props) {
-  const [classChoose, setClassChoose] = useState('41')
+  const [classChoose, setClassChoose] = useState('31')
   const handleClassChange = (value) => {
     setClassChoose(value)
     props.getStudentGradeAsyn({classChoose:value})
@@ -33,7 +34,8 @@ function GradeList(props) {
 export default connect(
   state => {
     return {
-      stuGrade: state.stuGrade
+      stuGrade: state.stuGrade,
+      ...state
     }
   },
   {

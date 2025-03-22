@@ -21,6 +21,11 @@ const items = [
         icon: React.createElement(FieldNumberOutlined),
         label: '总成绩'
     },
+    {
+        key: '/upload',
+        icon: React.createElement(FieldNumberOutlined),
+        label: '导入学生成绩'
+    },
 ]
 
 

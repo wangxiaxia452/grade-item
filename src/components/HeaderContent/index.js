@@ -5,6 +5,60 @@ import './index.less'
 
 const { Search } = Input
 
+const options = [
+    {
+        label: '三年级',
+        options: [
+            {
+                label: '三一班',
+                value: '31',
+            },
+            {
+                label: '三二班',
+                value: '32',
+            },
+            {
+                label: '三三班',
+                value: '33',
+            },
+        ],
+    },
+    {
+        label: '四年级',
+        options: [
+            {
+                label: '四一班',
+                value: '41',
+            },
+            {
+                label: '四二班',
+                value: '42',
+            },
+            {
+                label: '四三班',
+                value: '43',
+            },
+        ],
+    },
+    {
+        label: '五年级',
+        options: [
+            {
+                label: '五一班',
+                value: '51',
+            },
+            {
+                label: '五二班',
+                value: '52',
+            },
+            {
+                label: '五三班',
+                value: '53',
+            },
+        ],
+    },
+]
+
 export default function GradeList(props) {
 
   const { pathname } = useLocation()
@@ -32,30 +86,7 @@ export default function GradeList(props) {
             // dropdownMatchSelectWidth={false}
             // popupMatchSelectWidth={true}
             onChange={handleClassChange}
-            options={[
-                {
-                label: '四年级',
-                options: [
-                    {
-                    label: '四一班',
-                    value: '41',
-                    },
-                    {
-                    label: '四二班',
-                    value: '42',
-                    },
-                ],
-                },
-                {
-                label: '五年级',
-                options: [
-                    {
-                    label: '五三班',
-                    value: '53',
-                    },
-                ],
-                },
-            ]}
+            options={options}
             />
         </div>
         {
